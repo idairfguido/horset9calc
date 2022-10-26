@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>BDO - Horse T9 Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <style>
+            /* RESET */
+            * {
+                margin:0;
+                padding:0;
+                list-style:none;
+                vertical-align:baseline;
+                transition: 0.2s;
+                position:relative;
+            }
+            a {
+                text-decoration: none;
+            }
+            /* RESET */
+            .border-shadow {
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            }
+            .border-radius {
+                border-radius: 5px 5px 5px 5px;
+                -moz-border-radius: 5px 5px 5px 5px;
+                -webkit-border-radius: 5px 5px 5px 5px;
+                border: 0px solid #000000;
+            }
+            body{
+            }
+            #pagina {
+                width: 900px;
+                height: 450px;
+                margin: 10px auto;
+                position: relative;
+                min-width: 800px;
+            }
+            #pagina #titulo {
+                line-height: 100px;
+                text-align: center;
+                font-size: 150%;
+            }
+            #pagina #formulario {
+                position: absolute;
+                left: 2px;
+                top: 102px;
+                bottom: 2px;
+                right: 49%;
+            }
+            #pagina #resultado {
+                position: absolute;
+                left: 49%;
+                top: 102px;
+                bottom: 2px;
+                right: 2px;
+                text-align: center;
+            }
+            form div {
+                height: 43px;
+                width: 90%;
+                margin: 0px auto;
+                font-size: 110%;
+                border: 1px solid #FFF;
+            }
+
+            form div label {
+                line-height: 40px;
+                text-align: right;
+                position: absolute;
+                top: 1px;
+                bottom: 1px;
+                left: 1px;
+                right: 39%;
+            }
+            form div input[type="number"],
+            form div select {
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                bottom: 1px;
+                left: 62%;
+                text-align: right;
+            }
+            form div input[type="number"]{
+                text-align: right;
+            }
+            form div select {
+                text-align: center;
+            }
+            form div input[type="submit"] {
+                position: absolute;
+                top: 1px;
+                bottom: 1px;
+                left: 20px;
+                right: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="pagina" class="border-shadow border-radius">
+            <div id="titulo">Black Desert - Horse T9 Calculator</div>
+            <div id="formulario">
+                <form id="dadoscavalo">
+                    <div>
+                        <label for="cavalo">Qual o cavalo (T9): </label>
+                        <select name="cavalo" id="cavalo">
+                            <option value="selecione">Selecione uma opção</option>
+                            <option value="doom">Doom</option>
+                            <option value="pegazo">Pegazo</option>
+                            <option value="unicorneo">Unicórneo</option>
+                        </select>
+                    </div>
+                </form>
+                <form id="nivelhabilidade">
+                    <div>
+                        <label for="max-nivel">Nível máximo: </label>
+                        <input type="number" id="max-nivel" name="max-nivel" value="30" disabled="disabled"/>
+                    </div>
+                    <div>
+                        <label for="atual-nivel">Nível atual: </label>
+                        <input type="number" id="atual-nivel" name="atual-nivel" min="1" max="30" value="1"/>
+                    </div>
+                    <div>
+                        <label for="max-habilidade">Número máximo de habilidades: </label>
+                        <input type="number" id="max-habilidade" name="max-habilidade" disabled="disabled"/>
+                    </div>
+                    <div>
+                        <label for="atual-habilidade">Número de habilidades aprendidas: </label>
+                        <input type="number" id="atual-habilidade" name="atual-habilidade" min="1" max="25" value="1"/><br/>
+                    </div>
+                    <div>
+                        <input id="submit-buttom" type="submit" disabled="disabled"/>
+                    </div>
+                </form>
+            </div>
+            <div id="resultado"></div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#cavalo').change(function () {
+                    var cavalo = $('#cavalo option:selected').val();
+                    if (cavalo === "doom") {
+                        $('#max-habilidade').val(25);
+                        $('#submit-buttom').removeAttr("disabled");
+                    } else if (cavalo === "selecione") {
+                        $('#max-habilidade').val('');
+                        $('#submit-buttom').attr("disabled", "disabled");
+                    } else {
+                        $('#max-habilidade').val(24);
+                        $('#submit-buttom').removeAttr("disabled");
+                    }
+                });
+
+                $('#nivelhabilidade').submit(function (e) {
+                    e.preventDefault();
+                    var cavalo = $('#cavalo option:selected').val();
+                    var c = -1;
+                    switch (cavalo) {
+                        case "doom":
+                            c = 0;
+                            break;
+                        case "selecione":
+                            c = -1;
+                            break;
+                        default:
+                            c = 1;
+                            break;
+                    }
+                    var nivelAtual = $('#atual-nivel').val();
+                    var habilidadeAtual = $('#atual-habilidade').val();
+                    var maxNivel = $('#max-nivel').val();
+                    var maxHabilidade = $('#max-habilidade').val();
+
+                    var n = maxNivel - nivelAtual;
+                    var h = maxHabilidade - habilidadeAtual;
+                    var x = n - h;
+
+                    if (x === 0) {
+                        $('#resultado').html("Use cupom agora!");
+                    } else if (x > 0) {
+                        $('#resultado').html("Sem necessidade de usar cupom.");
+                    } else {
+                        $('#resultado').html("O cavalo não vai pegar todas as " + maxHabilidade + " habilidades");
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>
