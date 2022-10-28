@@ -165,18 +165,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         $('#atual-habilidade').attr("max", 24);
                     }
                 });
-
                 $('#nivelhabilidade').submit(function (e) {
                     e.preventDefault();                    
                     var nivelAtual = $('#atual-nivel').val();
                     var habilidadeAtual = $('#atual-habilidade').val();
                     var maxNivel = $('#max-nivel').val();
                     var maxHabilidade = $('#max-habilidade').val();
-
                     var n = maxNivel - nivelAtual;
                     var h = maxHabilidade - habilidadeAtual;
                     var x = n - h;
-
                     if (x === 0) {
                         if ((nivelAtual === maxNivel) && (habilidadeAtual === maxHabilidade)) {
                             $('#result').html("Parabéns, seu cavalo T9 aprendeu todas as habilidades.");
