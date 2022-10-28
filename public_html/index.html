@@ -34,28 +34,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 -webkit-border-radius: 5px 5px 5px 5px;
                 border: 0px solid #000000;
             }
-            body{
-            }
-            #pagina {
+            #page {
                 width: 900px;
                 height: 450px;
                 margin: 10px auto;
                 position: relative;
                 min-width: 800px;
             }
-            #pagina #titulo {
+            #page #title {
                 line-height: 100px;
                 text-align: center;
                 font-size: 150%;
             }
-            #pagina #formulario {
+            #page #form {
                 position: absolute;
                 left: 2px;
                 top: 102px;
                 bottom: 2px;
                 right: 49%;
             }
-            #pagina #resultado {
+            #page #result {
                 position: absolute;
                 left: 49%;
                 top: 102px;
@@ -110,13 +108,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </style>
     </head>
     <body>
-        <div id="pagina" class="border-shadow border-radius">
-            <div id="titulo">Black Desert - Horse T9 Calculator</div>
-            <div id="formulario">
-                <form id="dadoscavalo">
+        <div id="page" class="border-shadow border-radius">
+            <div id="title">Black Desert - Horse T9 Calculator</div>
+            <div id="form">
+                <form>
                     <div>
-                        <label for="cavalo">Qual o cavalo (T9): </label>
-                        <select name="cavalo" id="cavalo">
+                        <label for="horse">Qual o cavalo (T9): </label>
+                        <select name="horse" id="horse">
                             <option value="selecione">Selecione uma opção</option>
                             <option value="doom">Doom</option>
                             <option value="arduanatt">Arduanatt (Pégaso)</option>
@@ -146,13 +144,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
                 </form>
             </div>
-            <div id="resultado"></div>
+            <div id="result"></div>
         </div>
         <footer>Desenvolvido por: Idair Fernandes Guido, em 2022.</footer>
         <script>
             $(document).ready(function () {
-                $('#cavalo').change(function () {
-                    var cavalo = $('#cavalo option:selected').val();
+                $('#horse').change(function () {
+                    var cavalo = $('#horse option:selected').val();
                     if (cavalo === "doom") {
                         $('#max-habilidade').val(25);
                         $('#submit-buttom').removeAttr("disabled");
@@ -181,17 +179,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                     if (x === 0) {
                         if ((nivelAtual === maxNivel) && (habilidadeAtual === maxHabilidade)) {
-                            $('#resultado').html("Parabéns, seu cavalo T9 aprendeu todas as habilidades.");
+                            $('#result').html("Parabéns, seu cavalo T9 aprendeu todas as habilidades.");
                         } else {
-                            $('#resultado').html('Resultado: ' + x + '<br/>Use: \n\
+                            $('#result').html('Resultado: ' + x + '<br/>Use: \n\
                             <a target="_blank" href="https://bdocodex.com/pt/item/17559/">Cupom de Modificação de Habilidade da Montaria</a><br/>\n\
                             Troque: <a target="_blank" href="https://bdocodex.com/pt/mountskill/43/">Habilidade Passiva de Corcel</a><br/>\n\
                             Por outra ainda não aprendida.');
                         }
                     } else if (x > 0) {
-                        $('#resultado').html("Resultado: " + x + "<br/>Sem necessidade de usar cupom.");
+                        $('#result').html("Resultado: " + x + "<br/>Sem necessidade de usar cupom.");
                     } else {
-                        $('#resultado').html("Resultado: " + x + "<br/>O cavalo não vai pegar todas as " + maxHabilidade + " habilidades");
+                        $('#result').html("Resultado: " + x + "<br/>O cavalo não vai pegar todas as " + maxHabilidade + " habilidades");
                     }
                 });
             });
