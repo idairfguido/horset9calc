@@ -103,7 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 right: 20px;
             }
             footer{
-                width: 900px; 
+                width: 900px;
                 margin: 10px auto;
                 text-align: center;
             }
@@ -191,14 +191,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     var x = n - h;
 
                     if (x === 0) {
-                        $('#resultado').html('Resultado: '+ x +'<br/>Use: \n\
+                        if ((nivelAtual === maxNivel) && (habilidadeAtual === maxHabilidade)) {
+                            $('#resultado').html("Parabéns, seu cavalo T9 aprendeu todas as habilidades.");
+                        } else {
+                            $('#resultado').html('Resultado: ' + x + '<br/>Use: \n\
                             <a target="_blank" href="https://bdocodex.com/pt/item/17559/">Cupom de Modificação de Habilidade da Montaria</a><br/>\n\
                             Troque: <a target="_blank" href="https://bdocodex.com/pt/mountskill/43/">Habilidade Passiva de Corcel</a><br/>\n\
                             Por outra ainda não aprendida.');
+                        }
                     } else if (x > 0) {
-                        $('#resultado').html("Resultado: "+ x +"<br/>Sem necessidade de usar cupom.");
+                        $('#resultado').html("Resultado: " + x + "<br/>Sem necessidade de usar cupom.");
                     } else {
-                        $('#resultado').html("Resultado: "+ x +"<br/>O cavalo não vai pegar todas as " + maxHabilidade + " habilidades");
+                        $('#resultado').html("Resultado: " + x + "<br/>O cavalo não vai pegar todas as " + maxHabilidade + " habilidades");
                     }
                 });
             });
