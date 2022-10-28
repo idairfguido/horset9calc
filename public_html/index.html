@@ -170,20 +170,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 });
 
                 $('#nivelhabilidade').submit(function (e) {
-                    e.preventDefault();
-                    var cavalo = $('#cavalo option:selected').val();
-                    var c = -1;
-                    switch (cavalo) {
-                        case "doom":
-                            c = 0;
-                            break;
-                        case "selecione":
-                            c = -1;
-                            break;
-                        default:
-                            c = 1;
-                            break;
-                    }
+                    e.preventDefault();                    
                     var nivelAtual = $('#atual-nivel').val();
                     var habilidadeAtual = $('#atual-habilidade').val();
                     var maxNivel = $('#max-nivel').val();
