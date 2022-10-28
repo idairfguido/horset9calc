@@ -139,7 +139,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
                     <div>
                         <label for="atual-habilidade">Número de habilidades aprendidas: </label>
-                        <input type="number" id="atual-habilidade" name="atual-habilidade" min="1" max="25" value="1"/><br/>
+                        <input type="number" id="atual-habilidade" name="atual-habilidade" min="1" max="24" value="1"/><br/>
                     </div>
                     <div>
                         <input id="submit-buttom" type="submit" value="Calcular" disabled="disabled"/>
@@ -150,19 +150,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
         <footer>Desenvolvido por: Idair Fernandes Guido, em 2022.</footer>
 
-        <script type="text/javascript">
+        <script>
             $(document).ready(function () {
                 $('#cavalo').change(function () {
                     var cavalo = $('#cavalo option:selected').val();
                     if (cavalo === "doom") {
                         $('#max-habilidade').val(25);
                         $('#submit-buttom').removeAttr("disabled");
+                        $('#atual-habilidade').attr("max", 25);
                     } else if (cavalo === "selecione") {
                         $('#max-habilidade').val('');
                         $('#submit-buttom').attr("disabled", "disabled");
+                        $('#atual-habilidade').attr("max", 24);
                     } else {
                         $('#max-habilidade').val(24);
                         $('#submit-buttom').removeAttr("disabled");
+                        $('#atual-habilidade').attr("max", 24);
                     }
                 });
 
